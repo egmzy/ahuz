@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="he">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <h1 id="gameTitle"></h1>
+
+  <div id="mainButtons">
+    <button id="newRoomBtn" class="btn"></button>
+    <div>
+      <input type="text" autocomplete="off" id="playerNameInput">
+      <input type="text" autocomplete="off" id="roomNumberInput">
+      <button id="joinRoomBtn" class="btn"></button>
+    </div>
+  </div>
+
+  <div id="roomNumberWrapper" class="hidden">
+    <span id="roomNumberPrefix"></span><span id="roomNumberDisplay">7</span>
+  </div>
+
+  <div id="startGameSection" class="hidden">
+    <button id="startGameBtn" class="btn"></button>
+  </div>
+
+  <div id="playerList" class="hidden">
+    <h3 id="playersHeading"></h3>
+  </div>
+
+  <div id="gameContainer" class="hidden">
+    <div id="questionDisplay"></div>
+    <div id="answerInputWrapper" class="hidden">
+      <input type="text" id="answerInput">
+      <button id="answerBtn" class="btn"></button>
+    </div>
+    <div id="showAnswerWrapper" class="hidden">
+      <button id="showAnswerBtn" class="btn"></button>
+    </div>
+    <div id="answersContainer"></div>
+    <div id="correctAnswerDisplay" class="hidden"></div>
+    <div id="scoresDisplay" class="hidden"></div>
+    <button id="nextQuestionBtn" class="btn hidden"></button>
+  </div>
+
+  <script type="module" src="/lang.js"></script>
+  <script type="module" src="/client.js"></script>
+</body>
+
+</html>

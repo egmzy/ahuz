@@ -1,8 +1,12 @@
 {
-  "name": "socket-chat-example",
-  "version": "0.0.1",
-  "description": "my first socket.io app",
+  "name": "ahuz",
+  "version": "1.0.0",
+  "description": "Ahuz - Israeli Guesspionage Game",
   "type": "module",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js"
+  },
   "dependencies": {
     "express": "^4.21.2",
     "socket.io": "^4.8.1"

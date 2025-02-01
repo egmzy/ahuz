@@ -1,0 +1,15 @@
+export const lang = {
+  gameTitle: "אחלה משחק",
+  newRoomBtn: "אני המסך הראשי",
+  playerNamePlaceholder: "השם שלי..",
+  roomNumberPlaceholder: "מספר חדר..",
+  joinRoomBtn: "הצטרף",
+  roomNumberPrefix: "חדר מספר ",
+  startGameBtn: "אלללללה התחלנו",
+  playersHeading: "שחקנים:",
+  answerPlaceholder: "התשובה שלך",
+  answerBtn: "שלח",
+  showAnswerBtn: "כולם ענו",
+  nextQuestionBtn: "שאלה הבאה",
+  scoreHeading: "ניקוד (הכי נמוך מנצח)",
+};

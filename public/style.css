@@ -1,97 +1,82 @@
-#title {
-  font-size: 3rem;
-}
-
 html {
   direction: rtl;
   font-family: sans-serif;
   text-align: center;
 }
 
-#game {
-  background-color: rgb(135, 240, 240);
-  margin-top: 20px;
-}
-
-#room-number-wrapper {
-  margin-top: 20px;
-  font-size: 1.3rem;
-}
-
-#room-number {
-  font-weight: bold;
+#gameTitle {
+  font-size: 3rem;
 }
 
 .hidden {
   display: none;
 }
 
-#new-room-btn {
-  margin-bottom: 20px;
-  padding: 20px;
-  font-size: 1.3rem;
-}
-
-#join-room-btn,
-#player-name,
-#room-number-input,
-#start-game-btn,
-#answer-btn,
-#show-answer-btn,
-#next-question-btn {
+.btn {
   padding: 20px;
   font-size: 1.3rem;
   margin-bottom: 20px;
 }
 
-#player-list {
+input[type="text"] {
+  padding: 20px;
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+}
+
+/* Main game container styling */
+#gameContainer {
+  background-color: rgb(135, 240, 240);
   margin-top: 20px;
 }
 
-#player-list p {
+#roomNumberWrapper {
+  margin-top: 20px;
+  font-size: 1.3rem;
+}
+
+#roomNumberDisplay {
+  font-weight: bold;
+}
+
+#playerList {
+  margin-top: 20px;
+}
+
+#playerList p {
   font-weight: bold;
   font-size: 1.3rem;
 }
 
-#start-game {
+#startGameSection {
   margin-top: 20px;
 }
 
-#question {
+#questionDisplay {
   text-align: center;
   font-size: 2rem;
-  padding-top: 60px;
-  padding-bottom: 20px;
-}
-
-#answer-input {
-  font-size: 1.3rem;
-  padding: 20px;
-  margin-bottom: 20px;
+  padding: 60px 0 20px;
 }
 
 .public-answer {
   font-size: 1.3rem;
-  font-family: bold;
+  font-weight: bold;
 }
 
-#answers {
-  padding-top: 20px;
-  padding-bottom: 20px;
+#answersContainer {
+  padding: 20px 0;
   font-size: 1.3rem;
 }
 
-#correct-answer {
+#correctAnswerDisplay {
   font-weight: bold;
   font-size: 4rem;
   color: rgb(105, 85, 232);
-  padding-bottom: 20px;
-  padding-top: 20px;
+  padding: 20px 0;
 }
 
-#scores {
-  padding-bottom: 20px;
-  padding-top: 20px;
+#scoresDisplay {
+  padding: 20px 0;
   font-size: 1.5rem;
 }
 
