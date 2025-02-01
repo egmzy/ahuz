@@ -1,0 +1,100 @@
+#title {
+  font-size: 3rem;
+}
+
+html {
+  direction: rtl;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+#game {
+  background-color: rgb(135, 240, 240);
+  margin-top: 20px;
+}
+
+#room-number-wrapper {
+  margin-top: 20px;
+  font-size: 1.3rem;
+}
+
+#room-number {
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}
+
+#new-room-btn {
+  margin-bottom: 20px;
+  padding: 20px;
+  font-size: 1.3rem;
+}
+
+#join-room-btn,
+#player-name,
+#room-number-input,
+#start-game-btn,
+#answer-btn,
+#show-answer-btn,
+#next-question-btn {
+  padding: 20px;
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+}
+
+#player-list {
+  margin-top: 20px;
+}
+
+#player-list p {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+#start-game {
+  margin-top: 20px;
+}
+
+#question {
+  text-align: center;
+  font-size: 2rem;
+  padding-top: 60px;
+  padding-bottom: 20px;
+}
+
+#answer-input {
+  font-size: 1.3rem;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.public-answer {
+  font-size: 1.3rem;
+  font-family: bold;
+}
+
+#answers {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 1.3rem;
+}
+
+#correct-answer {
+  font-weight: bold;
+  font-size: 4rem;
+  color: rgb(105, 85, 232);
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+#scores {
+  padding-bottom: 20px;
+  padding-top: 20px;
+  font-size: 1.5rem;
+}
+
+h3 {
+  margin-top: 0;
+}

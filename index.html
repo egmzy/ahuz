@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>אחלה משחק</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+  <h1 id="title">אחלה משחק</h1>
+
+  <div id="main-btns">
+    <button id="new-room-btn">אני המסך הראשי</button>
+    <div>
+      <input type="string" autocomplete="off" placeholder="השם שלי.." id="player-name">
+      <input type="string" autocomplete="off" placeholder="מספר חדר.." id="room-number-input">
+      <button id="join-room-btn">הצטרף</button>
+    </div>
+  </div>
+
+  <div id="room-number-wrapper" class="hidden">
+    חדר מספר <span id="room-number">7</span>
+  </div>
+
+  <div id="start-game" class="hidden">
+    <button id="start-game-btn">אלללללה התחלנו</button>
+  </div>
+
+  <div id="player-list" class="hidden">
+    <h3>שחקנים:</h3>
+  </div>
+
+  <div id="game" class="hidden">
+    <div id="question"></div>
+    <div id="answer-input-wrapper" class="hidden">
+      <input type="text" id="answer-input" placeholder="התשובה שלך">
+      <button id="answer-btn">שלח</button>
+    </div>
+    <div id="show-answer-wrapper" class="hidden">
+      <button id="show-answer-btn">כולם ענו</button>
+    </div>
+    <div id="answers"></div>
+
+    <div id="correct-answer" class="hidden"></div>
+
+    <div id="scores" class="hidden"></div>
+
+    <button id="next-question-btn" class="hidden">שאלה הבאה</button>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+    var currentRoom = 0;
+    var currentPlayerName = '';
+
+    document.getElementById('new-room-btn').addEventListener('click', () => {
+      socket.emit('new-room');
+    });
+
+    socket.on('room-created', (roomNumber) => {
+      document.getElementById('main-btns').classList.add('hidden');
+      document.getElementById('room-number-wrapper').classList.remove('hidden');
+      document.getElementById('start-game').classList.remove('hidden');
+      document.getElementById('room-number').textContent = roomNumber;
+      currentRoom = roomNumber
+    });
+
+    document.getElementById('join-room-btn').addEventListener('click', () => {
+      const playerName = document.querySelector('#player-name').value;
+      currentPlayerName = playerName
+      const roomNumber = document.querySelector('#room-number-input').value;
+      if (roomNumber) {
+        socket.emit('join-room', { playerName, roomNumber });
+      }
+    });
+
+    socket.on('joined-room', (roomNumber) => {
+      document.getElementById('main-btns').classList.add('hidden');
+      document.getElementById('room-number-wrapper').classList.remove('hidden');
+      document.getElementById('room-number').textContent = roomNumber;
+      currentRoom = roomNumber
+    });
+
+    socket.on('player-list', (players) => {
+      const listDiv = document.getElementById('player-list');
+      listDiv.innerHTML = '';
+      players.forEach((name) => {
+        const p = document.createElement('p');
+        p.textContent = name;
+        listDiv.appendChild(p);
+      });
+      listDiv.classList.remove('hidden');
+    });
+
+    document.getElementById('start-game-btn').addEventListener('click', () => {
+      socket.emit('start-game', currentRoom);
+    });
+
+    socket.on('game-started', (data) => {
+      const { question, answer } = data
+      document.querySelector('#question').innerHTML = question;
+      document.getElementById('start-game').classList.add('hidden');
+      document.getElementById('player-list').classList.add('hidden');
+      document.getElementById('room-number-wrapper').classList.add('hidden');
+      document.getElementById('game').classList.remove('hidden');
+      if (currentPlayerName !== '') {
+        document.getElementById('answer-input-wrapper').classList.remove('hidden')
+      } else {
+        document.getElementById('show-answer-wrapper').classList.remove('hidden')
+      }
+      const correctAnswerDiv = document.querySelector('#correct-answer')
+      correctAnswerDiv.innerHTML = answer + '%'
+    });
+
+    document.querySelector('#answer-btn').addEventListener('click', () => {
+      const answer = document.querySelector('#answer-input').value;
+      socket.emit('send-answer', { currentRoom, currentPlayerName, answer });
+    })
+
+    socket.on('answered', (data) => {
+      const { playerName, answerFromServer } = data
+      if (playerName === currentPlayerName) {
+        document.querySelector('#answer-input').value = '';
+        document.getElementById('answer-input-wrapper').classList.add('hidden')
+      }
+
+      document.querySelector('#answers').classList.remove('hidden');
+
+      let div = document.createElement("div");
+      div.classList.add("public-answer");
+      div.innerHTML = `${playerName}: ${answerFromServer}`;
+      document.querySelector('#answers').append(div);
+    });
+
+    document.querySelector('#show-answer-btn').addEventListener('click', () => {
+      socket.emit('show-answer', currentRoom);
+    })
+
+    socket.on('answer-shown', (data) => {
+      document.querySelector('#correct-answer').classList.remove('hidden');
+      document.querySelector('#show-answer-btn').classList.add('hidden');
+      document.querySelector('#answers').classList.add('hidden');
+      document.querySelector('#scores').classList.remove('hidden');
+
+      if (currentPlayerName === '') {
+        document.querySelector('#next-question-btn').classList.remove('hidden');
+      }
+
+      const { players } = data
+      const scoresDiv = document.querySelector('#scores');
+      scoresDiv.innerHTML = '<h3>ניקוד (הכי נמוך מנצח)</h3>';
+      players.forEach(player => {
+        const div = document.createElement('div');
+        div.textContent = `${player.name}: ${player.score}`;
+        scoresDiv.appendChild(div);
+      });
+    });
+
+    document.querySelector('#next-question-btn').addEventListener('click', () => {
+      socket.emit('next-question', currentRoom);
+    })
+
+    socket.on('showing-next-question', (data) => {
+      const { question, answer } = data
+      document.querySelector('#question').innerHTML = question;
+
+      const correctAnswerDiv = document.querySelector('#correct-answer')
+      correctAnswerDiv.innerHTML = answer + '%'
+
+      if (currentPlayerName !== '') {
+        document.getElementById('answer-input-wrapper').classList.remove('hidden')
+      } else {
+        document.getElementById('show-answer-wrapper').classList.remove('hidden')
+      }
+
+      document.querySelector('#correct-answer').classList.add('hidden');
+      document.querySelector('#show-answer-btn').classList.remove('hidden');
+      document.querySelector('#next-question-btn').classList.add('hidden');
+      document.querySelector('#scores').classList.add('hidden');
+      document.querySelector('#answers').innerHTML = ''
+    });
+  </script>
+</body>
+
+</html>
