@@ -1,11 +1,40 @@
+body {
+  background: url("/background.jpg") no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  font-family: "Varela Round", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#colors {
+  color: #87ceeb;
+  color: #a8d5ba;
+  color: #8b5e3b;
+  color: #f4d35e;
+  color: #d1cfc7;
+}
+
 html {
   direction: rtl;
-  font-family: sans-serif;
   text-align: center;
 }
 
 #gameTitle {
-  font-size: 3rem;
+  font-size: 4rem;
+  color: rgb(105, 85, 232);
+  margin-bottom: 10px;
+  font-family: "Rubik Vinyl", serif;
+  font-weight: bold;
+  font-style: normal;
+  position: absolute;
+  top: 20px;
+  z-index: -1;
 }
 
 .hidden {
@@ -16,31 +45,46 @@ html {
   padding: 20px;
   font-size: 1.3rem;
   margin-bottom: 20px;
+  border-radius: 40px;
+  background-color: rgb(105, 85, 232);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.1s all;
+}
+
+.btn:hover {
+  background-color: rgb(53, 43, 123);
+}
+
+#newRoomBtn {
+  margin-bottom: 80px;
 }
 
 input[type="text"] {
-  padding: 20px;
+  padding: 10px;
   font-size: 1.3rem;
   margin-bottom: 20px;
+  width: 80%;
+  border-radius: 40px;
+  border: none;
+  text-align: center;
 }
 
-/* Main game container styling */
 #gameContainer {
-  background-color: rgb(135, 240, 240);
-  margin-top: 20px;
+  background-color: #00000054;
+  width: 100%;
+  color: white;
+  text-shadow: 0px 0px 5px black;
 }
 
 #roomNumberWrapper {
-  margin-top: 20px;
   font-size: 1.3rem;
+  margin-bottom: 10px;
 }
 
 #roomNumberDisplay {
   font-weight: bold;
-}
-
-#playerList {
-  margin-top: 20px;
 }
 
 #playerList p {
@@ -55,7 +99,8 @@ input[type="text"] {
 #questionDisplay {
   text-align: center;
   font-size: 2rem;
-  padding: 60px 0 20px;
+  font-size: 3rem;
+  padding: 50px;
 }
 
 .public-answer {
@@ -66,6 +111,7 @@ input[type="text"] {
 #answersContainer {
   padding: 20px 0;
   font-size: 1.3rem;
+  text-shadow: none;
 }
 
 #correctAnswerDisplay {
@@ -73,13 +119,20 @@ input[type="text"] {
   font-size: 4rem;
   color: rgb(105, 85, 232);
   padding: 20px 0;
+  text-shadow: 1px 1px 2px white;
 }
 
 #scoresDisplay {
   padding: 20px 0;
   font-size: 1.5rem;
+  color: white;
+  text-shadow: none;
 }
 
 h3 {
   margin-top: 0;
+}
+
+#bgMusic {
+  display: none;
 }

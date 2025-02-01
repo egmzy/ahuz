@@ -93,6 +93,7 @@ socket.on("gameStarted", (data) => {
   $("playerList").classList.add("hidden");
   $("roomNumberWrapper").classList.add("hidden");
   $("gameContainer").classList.remove("hidden");
+  $("gameTitle").classList.add("hidden");
   if (currentPlayerName !== "") {
     $("answerInputWrapper").classList.remove("hidden");
   } else {

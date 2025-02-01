@@ -1,8 +1,8 @@
 export const lang = {
-  gameTitle: "אחלה משחק",
+  gameTitle: "מה האחוז ?",
   newRoomBtn: "אני המסך הראשי",
-  playerNamePlaceholder: "השם שלי..",
-  roomNumberPlaceholder: "מספר חדר..",
+  playerNamePlaceholder: "השם שלי",
+  roomNumberPlaceholder: "מספר חדר",
   joinRoomBtn: "הצטרף",
   roomNumberPrefix: "חדר מספר ",
   startGameBtn: "אלללללה התחלנו",
@@ -11,5 +11,5 @@ export const lang = {
   answerBtn: "שלח",
   showAnswerBtn: "כולם ענו",
   nextQuestionBtn: "שאלה הבאה",
-  scoreHeading: "ניקוד (הכי נמוך מנצח)",
+  scoreHeading: "ניקוד",
 };
