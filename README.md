@@ -2,6 +2,13 @@
 
 Ahuz is a real‑time multiplayer game inspired by Jackbox’s Guesspionage. Players use their mobile devices to answer questions based on Israeli statistics while a main screen (or TV) shows the question. The player whose answer is closest to the correct percentage wins!
 
+<img width="1512" alt="Screenshot 2025-02-04 at 14 29 27" src="https://github.com/user-attachments/assets/1bab9db1-3e7e-40bf-ad0d-18d4a52665a1" />
+
+<img width="1511" alt="Screenshot 2025-02-04 at 14 31 00" src="https://github.com/user-attachments/assets/ea203a70-46fc-4f00-9145-409bd7f7fc16" />
+
+<img width="1512" alt="Screenshot 2025-02-04 at 14 32 15" src="https://github.com/user-attachments/assets/9201142a-00ef-4696-b60d-51ed26aa2e8d" />
+
+
 ## Features
 
 - **Real-time gameplay:** Uses Socket.io for live updates.
