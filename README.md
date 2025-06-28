@@ -1,4 +1,4 @@
-# Ahuz – Israeli Guesspionage Game
+# Ahuz – Hebrew Guesspionage Game
 
 Ahuz is a real‑time multiplayer game inspired by Jackbox’s Guesspionage. Players use their mobile devices to answer questions based on Israeli statistics while a main screen (or TV) shows the question. The player whose answer is closest to the correct percentage wins!
 
